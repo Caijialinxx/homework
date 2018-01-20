@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #efefef;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/*导航栏*/
+.topNavBar{
+    position: fixed;
+    width: 100%;
+}
+.topNavBar-inner{
+    padding: 20px 16px;
+}
+.topNavBar .logo{
+    float: left;
+    font-size: 24px;
+    font-family: "Arial Black";
+    padding: 3px 0 4px 0;
+}
+.topNavBar .logo > .rs{
+    margin-right: 4px;
+    color: #E6686A;
+}
+.topNavBar .logo > .card{
+    color: #9a9da2;
+}
+
+.topNavBar nav{
+    float: right;
+    padding-top: 7px;
+}
+.topNavBar nav > ul > li{
+    float: left;
+    margin: 0 17px;
+}
+.topNavBar nav > ul > li >a{
+    display: block;
+    color: #b7b7b7;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 0;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+}
+.topNavBar nav > ul > li >a:hover{
+    border-bottom: 3px solid #E6686A;
+}
+
+/*banner图*/
+.banner{
+    height: 515px;
+    background-image: url(../images/rs-cover.jpg);
+    background-position: center center;
+    background-size: cover;
+}
+.banner > .mask{
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.8)
+}
+
+/*名片卡*/
+.userCard{
+    max-width: 940px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+.userCard .profile{
+    padding: 50px;
+}
+.userCard .picture{
+    padding: 0;
+    float: left;
+}
+.userCard .text{
+    padding-left: 65px;
+    float: left;
+    width: 56%;
+}
+.userCard .welcome{
+    position: relative;
+    display: inline-block;
+    background-color: #E6686A;
+    color: #fff;
+    padding: 4px 16px;
+    line-height: 22px;
+    margin-bottom: 10px;
+}
+.userCard .welcome::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    display: block;
+    border: 5px solid #E6686A;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    top: 100%;
+    left: 4px;
+}
+.userCard h1{
+    margin-top: 18px;
+}
+.userCard hr{
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #dedede;
+}
+.userCard dt{
+    float: left;
+    width: 30%;
+    padding: 5px 0;
+    font-weight: bold;
+}
+.userCard dd{
+    float: left;
+    width: 70%;
+    color: #9da0a7;
+    padding: 5px 0;
+}
+.userCard > footer.media{
+    background-color: #E6686A;
+    padding: 16px 0;
+    text-align: center;
+}
+.userCard > footer.media > a{
+    display: inline-block;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 0 16px;
+}
+.userCard > footer.media > a:hover{
+    background-color: #cf5d5f;
+}
+.userCard svg{
+    width: 30px;
+    height: 30px;
+}
