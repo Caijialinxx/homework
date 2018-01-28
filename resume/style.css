@@ -31,22 +31,20 @@ header{
     margin-bottom: 40px;
 }
 .topNavBar{
-    z-index: 3;
+    z-index: 3;         /*导航栏的层级最高*/
     padding: 10px 0;    /*不定义左右边距是为了防止在width为100%的情况下内容溢出*/
-    position: relative;    /*使其脱离文档流*/
-    min-height: 0;
-    top: 0;
+    position: relative; /*与z-index、top、left配合使用，relative为元素预留位置*/
+    top: 0;             /*置顶*/
     left: 0;
     width: 100%;
-    transition: background-color 0.3s ease-out, padding 0.3s ease-out, min-height 0.3s ;
+    transition: background-color 0.3s ease-out, padding 0.3s ease-out;
 }
 .topNavBar-scroll{
-    position: fixed;
+    position: fixed;    /*使其脱离文档流。不为元素预留空间，通过指定元素相对于viewport的位置来指定元素位置。屏幕滚动时位置不变。*/
     padding: 0;
-    min-height: 60px;
     background-color: #fff;
     box-shadow: 0px 5px 25px 0px rgba(0,0,0,0.4);
-    transition: background-color 0.3s ease-out, padding 0.3s ease-out;
+    transition: background-color 0.3s ease-out, padding 0.3s ease-out;  /*多个效果需要放在同一行且用逗号隔开，若分两条css属性写，则前面的会被后面覆盖*/
 }
 .topNavText-scroll{
     color: #3d4451;
@@ -103,15 +101,14 @@ header nav > ul > li > a:hover{
 /* 背景图 */
 header .banner{
     z-index: 1;
-    position: absolute;
-    display: block;
+    position: absolute;         /*不为元素预留空间，与top、left结合使用*/
+    top: 0;                     /*置顶*/
+    left: 0;
+    right: 0;
     height: 515px;
     background-image: url(./images/wallhaven-557327.jpg);
     background-position: center center;
     background-size: cover;
-    top: 0;
-    left: 0;
-    right: 0;
 }
 header .banner .mask{
     height: 515px;
@@ -127,7 +124,7 @@ header .banner .mask{
 }
 /* 名片 */
 main{
-    padding-top: 70px;
+    padding-top: 70px;          /*使得锚点定位时不会被导航栏覆盖内容*/
 }
 .userCard{
     max-width: 940px;
@@ -265,7 +262,7 @@ section.skills > ol{
 section.skills > ol > li{
     float: left;
     width: 50%;
-    box-sizing: border-box;
+    box-sizing: border-box;         /*使得即使添加了padding值也不会影响整体的宽度，即边框和内边距的值包含在width内*/
     padding: 20px;
 }
 section.skills .progressBar{
@@ -324,7 +321,6 @@ section.portfolio > nav > .bar > .bar-inner.state3{
 section.protfolio > .works{
     max-width: 940px;
     border: 5px solid red;
-    position: relative;
 }
 section.portfolio > .works > .big{
     float: left;
@@ -333,20 +329,6 @@ section.portfolio > .works > .big{
 section.portfolio > .works > .small{
     float: left;
 }
-/*section.portfolio > .works .mask{
-    float: left;
-    z-index: 2;
-    position: absolute;
-    width: 100%;
-    height: 600px;
-    background-color: rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease-out;
-}
-section.portfolio > .works .mask:hover{
-    height: 600px;
-    background-color: rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease-out;
-}*/
 
 footer.footer{
     margin: 60px auto;
