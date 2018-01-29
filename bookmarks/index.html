@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="wrapper"></div>
+  <script>
+    keys=[
+      ['q','w','e','r','t','y','u','i','o','p'],
+      ['a','s','d','f','g','h','j','k','l'],
+      ['z','x','c','v','b','n','m']
+    ]
+    hash={
+      'q':"", 'w':"w3.org", 'e':"", 'r':"ruanyifeng.com", 't':"css-tricks.com", 
+      'y':"youtube.com", 'u':"", 'i':"iconfont.cn", 'o':"", 'p':"processon.com", 
+      'a':"amazon.com", 's':"sm.ms", 'd':"dribbble.com", 'f':"facebook.com", 
+      'g':"github.com/Caijialinxx", 'h':"", 'j':"jsbin.com", 'k':"", 'l':"", 
+      'z':"zhihu.com", 'x':"xiedaimala.com", 'c':"caijialinxx.github.io", 
+      'v':"", 'b':"baidu.com", 'n':"", 'm':"developer.mozilla.org/zh-CN/"
+    }
+
+    for (i = 0; i < keys.length; i++) {
+      div = document.createElement('div')
+      wrapper.appendChild(div)
+      for (j = 0; j < keys[i].length; j++) {
+        kbd = document.createElement('kbd')
+        div.appendChild(kbd)
+        kbd.textContent = keys[i][j]
+        
+        btn = document.createElement('button')
+        kbd.appendChild(btn)
+        btn.textContent = "E"
+        btn.id = keys[i][j]
+
+        btn.onclick = function (e) {
+          newSite = prompt("请自定义【" + e.target.id.toUpperCase() + "】键的快捷网址：", hash[e.target.id])
+          if (newSite == "") {
+            alert("未输入自定义快捷网址，您可以随时重新自定义")
+            hash[e.target.id]=newSite;
+            localStorage.setItem('newHash', JSON.stringify(hash))
+          }
+          else if (newSite == null) {
+            if(hash[e.target.id]){
+              alert("您取消了自定义，将会继续使用默认快捷网址！")
+            }
+          }
+          else {
+            alert("自定义成功！您设置【" + e.target.id.toUpperCase() + "】键的新快捷网址是 http://" + newSite)
+            hash[e.target.id]=newSite;
+            localStorage.setItem('newHash', JSON.stringify(hash))
+          }
+        }
+      }
+    }
+    document.onkeypress=function(e){
+      website = hash[e.key]
+      if(website){
+        window.open("http://"+website,"_blank")
+      }
+      else{
+        alert("您未定义【"+e.key.toUpperCase()+"】键的快捷网址")
+      }
+    }
+  </script>
+</body>
+</html>
