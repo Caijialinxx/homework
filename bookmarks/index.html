@@ -22,6 +22,10 @@
       'v':"", 'b':"baidu.com", 'n':"", 'm':"developer.mozilla.org/zh-CN/"
     }
 
+    hashInLocalStorage = JSON.parse(localStorage.getItem('newHash')||null)
+    if(hashInLocalStorage){
+      hash = hashInLocalStorage
+    }
     for (i = 0; i < keys.length; i++) {
       div = document.createElement('div')
       wrapper.appendChild(div)
