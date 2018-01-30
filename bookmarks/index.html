@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bg"><div class="bgMask"></div></div>
   <div id="wrapper"></div>
   <script>
     keys=[
@@ -21,11 +22,17 @@
       'z':"zhihu.com", 'x':"xiedaimala.com", 'c':"caijialinxx.github.io", 
       'v':"", 'b':"baidu.com", 'n':"", 'm':"developer.mozilla.org/zh-CN/"
     }
-
+    
+    //取出localStorage中对应的哈希表，如果存在则赋值给变量hash，实现刷新页面可以取得最新的哈希表
     hashInLocalStorage = JSON.parse(localStorage.getItem('newHash')||null)
     if(hashInLocalStorage){
       hash = hashInLocalStorage
     }
+
+    document.onkeypress=function(e){
+      openKeyWebsite(e.key)
+    }
+
     for (i = 0; i < keys.length; i++) {
       div = document.createElement('div')
       wrapper.appendChild(div)
@@ -39,6 +46,11 @@
         btn.textContent = "E"
         btn.id = keys[i][j]
 
+        //添加鼠标点击按键事件，使其实现啊与键盘按键打开快捷网址同样的效果
+        kbd.onclick = function(e){
+          openKeyWebsite(e.target.firstChild.data)
+        }
+        //当点击<button>"E"时进行自定义快捷网址编辑
         btn.onclick = function (e) {
           newSite = prompt("请自定义【" + e.target.id.toUpperCase() + "】键的快捷网址：", hash[e.target.id])
           if (newSite == "") {
@@ -59,13 +71,16 @@
         }
       }
     }
-    document.onkeypress=function(e){
-      website = hash[e.key]
-      if(website){
-        window.open("http://"+website,"_blank")
-      }
-      else{
-        alert("您未定义【"+e.key.toUpperCase()+"】键的快捷网址")
+    function openKeyWebsite(key){
+      //加入此条件判断是为了防止点击<button>"E"时，函数误以为需要查询hash["E"]并执行后续操作。
+      if (key !== "E") {
+        website = hash[key]
+        if (website) {
+          window.open("http://" + website, "_blank")
+        }
+        else {
+          alert("您未定义【" + key.toUpperCase() + "】键的快捷网址")
+        }
       }
     }
   </script>
