@@ -1,37 +1,42 @@
 *{ margin:0; padding:0; outline:none;}
-.bg{
+body{
   background-image: url(wallhaven-557327.jpg);
   background-size: cover;
-  position: absolute;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-.bg > .bgMask{
-  background-color: rgba(0, 0, 0, 0.3);
-  height: inherit;
 }
 
+main{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #wrapper{
-  margin-top: 180px;
   text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 kbd{
-  background-color: rgba(235, 235, 235, 0.4);
   display: inline-block;
   width: 4em;
   height: 4em;
-  line-height: 4em;
   margin: 4px;
+  padding-left: 10px;
+  line-height: 32px;
+  text-align:  left;
+  box-sizing: border-box;
   position: relative;
   cursor: pointer;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 5%;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6), 0 1px 4px rgba(255, 255, 255, .3);
+  border-radius: 8px;
   text-transform: uppercase;
   font-family: sans-serif;
+  color: #FFF;
+  text-shadow: 0px 0px 10px rgba(255, 255, 210, 1);
+  background-color: rgba(123, 123, 123, 0.2);
 }
 kbd:hover{
+  color: black;
   background-color: seashell;
   box-shadow: 0px 3px 20px 3px rgba(196, 172, 172, 0.63);
   transition: background-color 0.2s, box-shadow 0.2s, width 0.2s, height 0.2s;
@@ -44,12 +49,19 @@ kbd-active{
 kbd:hover > button{
   display: inline-block;
 }
+img{
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+}
+/*编辑按钮*/
 button{
   display: none;
   position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 2px;
+  right: 6px;
+  bottom: 6px;
   border: none;
   background-color: antiquewhite;
   width: 1em;
