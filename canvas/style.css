@@ -1,0 +1,41 @@
+*{
+  margin:0;
+  padding:0;
+  outline: none;
+}
+#canvas{
+  background-color: #eee;
+  position: relative;
+  cursor: url(icon-pen.png),auto;
+}
+#behaviour{
+  position: fixed;
+  bottom:0;
+  left:0;
+}
+#behaviour > #tips{
+  user-select:none;
+}
+#behaviour > #pen{
+  display: none;
+}
+#behaviour > #eraser{
+  cursor: pointer;
+  border: 5px solid transparent;
+  border-radius: 50%;
+  background-color: antiquewhite;
+  background-clip: padding-box;
+  padding: 5px;
+}
+#behaviour.active > #pen{
+  display: inline-block;
+  cursor: pointer;
+  border: 5px solid transparent;
+  border-radius: 50%;
+  background-color: antiquewhite;
+  background-clip: padding-box;
+  padding: 5px;
+}
+#behaviour.active > #eraser{
+  display: none;
+}
