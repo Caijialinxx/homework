@@ -28,28 +28,53 @@ function painting(canvas){
   var isUsing = false;        //是否正在使用
   var previousPoint = {"x":undefined, "y":undefined};      //定义一个变量存储上一个点的坐标
   isPenOrEraser()
-  //鼠标点击下去时
-  canvas.onmousedown=function(e){
-    var x = e.clientX
-    var y = e.clientY
-    previousPoint = {"x":x, "y":y}
-    drawPoint(x,y,3)
-    isUsing = true
-  }
-  //鼠标移动时
-  canvas.onmousemove=function(e){
-    if(isUsing){
-      var x=e.clientX
-      var y=e.clientY
-      var newPoint = {"x":x, "y":y}
+  //特性检测
+  if(document.body.ontouchstart!==undefined){
+    //触屏设备
+    canvas.ontouchstart=function(e){
+      console.log(e)
+      var x = e.touches["0"].clientX
+      var y = e.touches["0"].clientY
+      previousPoint = {"x":x, "y":y}
       drawPoint(x,y,3)
-      drawLine(previousPoint.x, previousPoint.y, newPoint.x, newPoint.y)
-      previousPoint = newPoint
+      isUsing = true
+    }
+    canvas.ontouchmove=function(e){
+      if(isUsing){
+        var x=e.touches["0"].clientX
+        var y=e.touches["0"].clientY
+        var newPoint = {"x":x, "y":y}
+        drawPoint(x,y,3)
+        drawLine(previousPoint.x, previousPoint.y, newPoint.x, newPoint.y)
+        previousPoint = newPoint
+      }
+    }
+    canvas.ontouchend=function(e){
+      isUsing = false
     }
   }
-  //鼠标松开后
-  canvas.onmouseup=function(e){
-    isUsing = false
+  else{
+    //PC设备
+    canvas.onmousedown=function(e){
+      var x = e.clientX
+      var y = e.clientY
+      previousPoint = {"x":x, "y":y}
+      drawPoint(x,y,3)
+      isUsing = true
+    }
+    canvas.onmousemove=function(e){
+      if(isUsing){
+        var x=e.clientX
+        var y=e.clientY
+        var newPoint = {"x":x, "y":y}
+        drawPoint(x,y,3)
+        drawLine(previousPoint.x, previousPoint.y, newPoint.x, newPoint.y)
+        previousPoint = newPoint
+      }
+    }
+    canvas.onmouseup=function(e){
+      isUsing = false
+    }
   }
 }
 
