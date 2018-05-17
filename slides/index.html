@@ -12,17 +12,22 @@
 <body>
   <div class="window">
     <div id="images" class="images">
-      <img class="enter" src="https://i.loli.net/2018/05/16/5afc016d4cda9.jpg" width="500" alt="timg1.jpg" title="timg1.jpg" />
-      <img src="https://i.loli.net/2018/05/16/5afc016da46eb.jpg" width="500" alt="timg2.jpg" title="timg2.jpg" />
-      <img src="https://i.loli.net/2018/05/16/5afc016da5efd.jpg" width="500" alt="timg3.jpg" title="timg3.jpg" />
-      <div class="buttons">
-        <span id="prev">＜</span>
-        <span id="next">＞</span>
-      </div>
+      <img src="./images/timg1.jpg" width="500" height="313" alt="timg1.jpg" title="timg1.jpg" class="enter" />
+      <img src="./images/timg2.jpg" width="500" height="313" alt="timg2.jpg" title="timg2.jpg" class="standby" />
+      <img src="./images/timg3.jpg" width="500" height="313" alt="timg3.jpg" title="timg3.jpg" class="leave" />
+    </div>
+    <div class="buttons">
+      <div id="prev">＜</div>
+      <div id="next">＞</div>
+    </div>
+    <div class="items">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="main.js"></script>
-  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 </body>
 
 </html>
