@@ -1,15 +1,17 @@
 var intervalId = intervalSlide(), n = 0;
+var imgItems = $('.images').find('img');
+var btnItems = $('.items').find('span');
 
 // 上一张
 $(prev).click(() => {
-  clickSlide(which(n - 2) - 1);
+  clickSlide(n - 2);
 });
 // 下一张
 $(next).click(() => {
   clickSlide(n);
 });
 // 圆点导航
-$('.items > span').click((e) => {
+$(btnItems).click((e) => {
   clickSlide($(e.target).index() - 1);
 });
 
@@ -32,23 +34,22 @@ function clickSlide(target_N) {
 function intervalSlide() {
   return setInterval(() => {
     slide();
-  }, 2000);
+  }, 1000);
 }
 // 播放一次的动画函数
 function slide() {
   // 上一张图standby
-  $(`.images > img:nth-child(${which(n - 1)})`).removeClass('leave enter').addClass('standby');
+  imgItems.eq(which(n - 1)).removeClass('leave enter').addClass('standby');
   // 当前图leave
-  $(`.images > img:nth-child(${which(n)})`).removeClass('enter standby').addClass('leave');
+  imgItems.eq(which(n)).removeClass('enter standby').addClass('leave');
   // 下一张图enter
-  $(`.images > img:nth-child(${which(n + 1)})`).removeClass('standby leave').addClass('enter');
+  imgItems.eq(which(n + 1)).removeClass('standby leave').addClass('enter');
   // 圆点随之变化
-  $(`.items > span:eq(${which(n + 1) - 1})`).addClass('active').siblings('.active').removeClass('active');
+  btnItems.eq(which(n + 1)).addClass('active').siblings('.active').removeClass('active');
   n++;
 }
 // 返回应该播放的第x张图
 function which(index) {
   if (index < 0) { index += 3; }  //解决负数返回错误的值。-3 -2 -1 => 0 1 2
-  else if (index > 2) { index = index % 3; }
-  return index + 1;       // 第 1/2/3 张图
+  return index % imgItems.length;
 }
