@@ -34,7 +34,7 @@ function clickSlide(target_N) {
 function intervalSlide() {
   return setInterval(() => {
     slide();
-  }, 1000);
+  }, 2000);
 }
 // 播放一次的动画函数
 function slide() {
