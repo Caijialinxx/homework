@@ -204,3 +204,33 @@ npx webpack --config webpack.config.js
   |- /src
     |- index.js
 ```
+
+
+## NPM Scripts
+由于每次更新代码都要运行 `npx webpack --config webpack.config.js` 很不方便，所以我们可以在 package.json 中添加一个 npm scripts ：
+
+package.json
+```json
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
++   "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.10"
+  }
+}
+```
+那么现在就可以直接运行 `npm run build` 来替代之前的命令。
