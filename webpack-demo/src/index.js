@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import $ from 'jquery';
+import x from './myFile';
 
 function component() {
   var element = $('<div></div>');
@@ -11,3 +12,4 @@ function component() {
 }
 
 $('body').append(component());
+alert(x());
