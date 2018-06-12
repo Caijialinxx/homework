@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'xxx';
+  src: url('./Adieresis.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.hello {
+  color: rebeccapurple;
+  font-family: 'xxx';
+  font-size: 40px;
+}
