@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'myfont';
+  src: url(./Kabob.ttf) format('truetype');
+  font-weight: 600;
+}
+
 .hello {
   color: purple;
+  font-family: 'myfont';
+  font-size: 40px;
 }
