@@ -37,8 +37,8 @@ body {
   height: 40px;
   margin-top: -30px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 225, 0.3);
-  box-shadow: 0 0 2px 2px #fff;
+  background-color: rgba(255, 255, 225, 0.5);
+  box-shadow: 0 0 2px 2px #fff9e3;
   z-index: 2;
 }
 #speed > button:hover, #speed > button.active {

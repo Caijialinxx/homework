@@ -212,18 +212,29 @@ $('#speed > button').click((e) => {
   if (speedCode > 3) {
     speedCode = 1
   }
-  $(e.target).css({
-    'animation-duration': `${4 - speedCode}s`,
-    'background-color': `rgb(255, ${(255 - 0) / speedCode}, ${(255 - 30) / speedCode})`
-  })
   switch (speedCode) {
     case 1:
+      $(e.target).css({
+        'animation-duration': '3s',
+        'background-color': 'rgb(255, 255, 225)',
+        'box-shadow': '0 0 2px 2px #fff9e3'
+      })
       duration = 80
       break
     case 2:
+      $(e.target).css({
+        'animation-duration': '2s',
+        'background-color': 'rgb(255, 220, 160)',
+        'box-shadow': '0 0 2px 2px #ffd797'
+      })
       duration = 50
       break
     case 3:
+      $(e.target).css({
+        'animation-duration': '1s',
+        'background-color': 'rgb(255, 130, 130)',
+        'box-shadow': '0 0 2px 2px #ffa0a0'
+      })
       duration = 10
       break
     default:
