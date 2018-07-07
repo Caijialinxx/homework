@@ -183,7 +183,7 @@ let code_preword = `/*
  */
 `
 
-
+let speedCode = 1, duration = 80
 writeCode(code_preword, '').then(() => {
   writeCode(code_css, code_preword).then(() => {
     writeCode(code_ending, code_preword + code_css)
@@ -193,23 +193,21 @@ writeCode(code_preword, '').then(() => {
 function writeCode(code, origin) {
   let n = 1
   return new Promise(resolve => {
-    let id = setInterval(() => {
-      console.log(n)
+    setTimeout(function write() {
       $('#code-wrapper')[0].scrollTop = $('#code-wrapper')[0].scrollHeight;
       $('#code-wrapper')[0].innerHTML = Prism.highlight(origin + code.substr(0, n), Prism.languages.css, 'css');
       $('#styleTag')[0].innerHTML = origin + code.substr(0, n)
       if (n === code.length) {
-        window.clearInterval(id)
         resolve.call(undefined)
       } else {
         n += 1
+        setTimeout(write, duration)
       }
-    }, 80)
+    }, duration)
   })
 }
 
-let speedCode = 1
-$('#speed').click((e) => {
+$('#speed > button').click((e) => {
   speedCode += 1
   if (speedCode > 3) {
     speedCode = 1
@@ -218,4 +216,17 @@ $('#speed').click((e) => {
     'animation-duration': `${4 - speedCode}s`,
     'background-color': `rgb(255, ${(255 - 0) / speedCode}, ${(255 - 30) / speedCode})`
   })
+  switch (speedCode) {
+    case 1:
+      duration = 80
+      break
+    case 2:
+      duration = 50
+      break
+    case 3:
+      duration = 10
+      break
+    default:
+      return 0
+  }
 })

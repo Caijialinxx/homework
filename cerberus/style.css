@@ -58,6 +58,7 @@ body {
   height: inherit;
   padding: 10px;
   overflow: auto;
+  border: 1px solid #fff;
 }
 
 .preview-wrapper {
