@@ -13,6 +13,8 @@ let code_preword = `/*
  * 的好伙伴
  * 
  * 小可~~~ 哈哈哈哈哈哈哈
+ * 
+ * 不费话了，赶紧开始吧！
  */
 
  `,
@@ -29,18 +31,15 @@ let code_preword = `/*
   background-color: #f7b749;
 }
 
-/* 先定好头的位置 */
-.head {
-  width: 300px;
-  height: 180px;
-  padding: 10px 0;
-}
 /* 
+ * 先定好头的位置
  * 加个边框，让我们知道头在哪里
  * 然后让头里面的眼睛鼻子嘴巴
  * 全都在这个框框里定位
  */
 .head {
+  width: 300px;
+  height: 180px;
   border: 1px solid #eee;
 }
 
@@ -205,6 +204,6 @@ function writeCode(code, origin) {
       } else {
         n += 1
       }
-    }, 1)
+    }, 80)
   })
 }
