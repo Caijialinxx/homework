@@ -4,6 +4,7 @@ body {
   height: 100vh;
   font-size: 14px;
   line-height: 1.6;
+  background-color: #ffecc7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +15,6 @@ body {
   width: 100%;
   height: inherit;
   padding: 10px;
-  background-color: #fff3dd;
   overflow: auto;
 }
 
@@ -24,6 +24,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.head {
+  position: relative; 
+}
+.head * {
+  position: absolute;
 }
 .lips {
   left: 50%;
