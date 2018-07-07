@@ -11,6 +11,48 @@ body {
   flex-direction: column;
 }
 
+#speed {
+  width: 50px;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+}
+#speed::after {
+  content: '↑';
+  display: block;
+  position: absolute;
+  color: red;
+  animation: down 0.3s linear 0s infinite alternate;
+}
+@keyframes down {
+  from { top: 8px; }
+  to { top: 12px; }
+}
+#speed > button {
+  border: none;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  margin-top: -30px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 225, 0.3);
+  box-shadow: 0 0 2px 2px #fff;
+  z-index: 2;
+}
+#speed > button:hover, #speed > button.active {
+  background-color: rgb(255, 255, 225);
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  animation: rotate 3s linear 0s infinite;
+}
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 #code-wrapper {
   width: 100%;
   height: inherit;

@@ -207,3 +207,15 @@ function writeCode(code, origin) {
     }, 80)
   })
 }
+
+let speedCode = 1
+$('#speed').click((e) => {
+  speedCode += 1
+  if (speedCode > 3) {
+    speedCode = 1
+  }
+  $(e.target).css({
+    'animation-duration': `${4 - speedCode}s`,
+    'background-color': `rgb(255, ${(255 - 0) / speedCode}, ${(255 - 30) / speedCode})`
+  })
+})
