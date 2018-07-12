@@ -26,7 +26,23 @@ var server = http.createServer(function (request, response) {
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
     console.log(request.headers.cookie)
     if (request.headers.cookie) {
-      response.write(`<h1>Welcome!</h1>`)
+      let parts = request.headers.cookie.split(';')
+      let hash = {}
+      parts.forEach(item => {
+        let part = item.split('=')
+        hash[part[0]] = part[1]
+      })
+      let users = JSON.parse(fs.readFileSync('./db_users', 'utf8'))
+      users.forEach((user, index) => {
+        if (hash.user === user.email) {
+          response.write(`<h1>Welcome!</h1>`)
+        } else if (index === users.length - 1) {
+          response.write(`<h1>
+            请<a href='/login.html'>登录！</a>
+            如果未注册，<a href='/signup.html'>请注册</a>
+          </h1>`)
+        }
+      })
     } else {
       response.write(`<h1>
         请<a href='/login.html'>登录！</a>
@@ -55,7 +71,7 @@ var server = http.createServer(function (request, response) {
         if (user.email === email) {
           if (user.password === password) {
             response.statusCode = 200
-            response.setHeader('Set-Cookie', `user=${email}`)
+            response.setHeader('Set-Cookie', [`user=${email}; HttpOnly`, 'nationality=China'])
           } else {
             response.statusCode = 403
             response.setHeader('Content-Type', 'application/json;charset=utf-8')
