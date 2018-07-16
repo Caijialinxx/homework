@@ -65,30 +65,32 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__style_css__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__style_css__);
 
 
+var _lodash = __webpack_require__(1);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+__webpack_require__(4);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function component() {
-  let span = document.createElement('span')
-  span.innerHTML = __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.join(['Hello', 'webpack'], ' ')
-  span.className = 'hello'
+  var span = document.createElement('span');
+  span.innerHTML = _lodash2.default.join(['Hello', 'webpack'], ' ');
+  span.className = 'hello';
 
-  let wrapper = document.createElement('div')
-  wrapper.appendChild(span)
-  wrapper.className = 'wrapper'
+  var wrapper = document.createElement('div');
+  wrapper.appendChild(span);
+  wrapper.className = 'wrapper';
 
-  return wrapper
+  return wrapper;
 }
 
-document.body.appendChild(component())
+document.body.appendChild(component());
 
 /***/ }),
 /* 1 */
