@@ -17284,8 +17284,8 @@ var update = __webpack_require__(7)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {
-	module.hot.accept("!!../node_modules/css-loader/index.js!./style.css", function() {
-		var newContent = require("!!../node_modules/css-loader/index.js!./style.css");
+	module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./style.scss", function() {
+		var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./style.scss");
 
 		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 
@@ -17319,7 +17319,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "body {\r\n  margin: 0;\r\n  padding: 0;\r\n  background-color: antiquewhite;\r\n}\r\n\r\n.wrapper {\r\n  height: 100vh;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.hello {\r\n  font-size: 24px;\r\n  color: purple;\r\n  text-shadow: 0px 4px 4px palevioletred;\r\n}", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n  padding: 0;\n  background-color: antiquewhite; }\n\n.wrapper {\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n  .wrapper .hello {\n    font-size: 24px;\n    color: purple;\n    text-shadow: 0px 4px 4px palevioletred; }\n", ""]);
 
 // exports
 

@@ -1,5 +1,5 @@
 import _ from "lodash"
-import './style.css'
+import './style.scss'
 
 function component() {
   let span = document.createElement('span')
