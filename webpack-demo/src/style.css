@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: antiquewhite;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hello {
+  font-size: 24px;
+  color: purple;
+  text-shadow: 0px 4px 4px palevioletred;
+}
