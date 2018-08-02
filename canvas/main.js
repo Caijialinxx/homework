@@ -41,7 +41,7 @@ function painting(canvas) {
     //触屏设备
     canvas.addEventListener('touchstart', touchStart.bind(null, previousPoint))
     canvas.addEventListener('touchmove', touchMove.bind(null, previousPoint))
-    canvas.addEventListener('touchcancel', touchCancel.bind(null, previousPoint))
+    canvas.addEventListener('touchcancel', touchCancel)
   }
   else {
     //PC设备
@@ -81,8 +81,8 @@ function touchStart(point, e) {
   e.preventDefault()
   let x, y
   for (let touch of e.changedTouches) {
-    x = touch.clientX
-    y = touch.clientY
+    x = Math.floor(touch.clientX)
+    y = Math.floor(touch.clientY)
     if (!eraserEnabled) {
       point[touch.identifier] = { x: x, y: y }
       drawPoint(x, y, ctx.radius)
@@ -95,8 +95,8 @@ function touchMove(originalPoint, e) {
   e.preventDefault()
   let x, y, newPoint = {}
   for (let touch of e.changedTouches) {
-    x = touch.clientX
-    y = touch.clientY
+    x = Math.floor(touch.clientX)
+    y = Math.floor(touch.clientY)
     if (!eraserEnabled) {
       newPoint[touch.identifier] = { x: x, y: y }
       drawPoint(x, y, ctx.radius)           //需要添加此函数才不会使得画出来的线在lineWidth变大时不完整
