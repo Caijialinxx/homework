@@ -38,7 +38,7 @@ function painting(canvas) {
   ctx.fillStyle = "black"
   ctx.lineWidth = 2
   ctx.radius = 1
-  let isUsing = false;        //是否正在使用
+  let isUsing = false        //是否正在使用
   let previousPoint = {}
   //特性检测
   if (document.body.ontouchstart !== undefined) {
@@ -46,8 +46,8 @@ function painting(canvas) {
     canvas.addEventListener('touchstart', touchStart.bind(null, previousPoint))
     canvas.addEventListener('touchmove', touchMove.bind(null, previousPoint))
     canvas.addEventListener('touchcancel', touchCancel.bind(null, previousPoint))
-      }
-      else {
+  }
+  else {
     //PC设备
     canvas.onmousedown = (e) => {
       isUsing = true
@@ -76,7 +76,7 @@ function painting(canvas) {
         }
       }
     }
-    canvas.onmouseup = (e) => {
+    canvas.onmouseup = () => {
       isUsing = false
     }
   }
@@ -159,11 +159,15 @@ function drawPoint(x, y, radius) {
 }
 /* 画轨迹（线条） */
 function drawLine(x1, y1, x2, y2) {
+  // 解决IOS中获取不到ctx设置的问题
+  if (ctx.lineWidth === 1) {
+    ctx.lineWidth = 2
+    ctx.radius = 1
+  }
   ctx.beginPath()
   ctx.moveTo(x1, y1)
   ctx.lineTo(x2, y2)
   ctx.stroke()
-  //ctx.closePath()会导致线条粗细不均
 }
 /* 选择哪个动作 */
 function takeAction(element) {
@@ -181,6 +185,7 @@ function takeAction(element) {
     thickness.className = "remove"
   } else if (element === 'clearall') {
     ctx.clearRect(0, 0, canvas.width, canvas.height)    //清屏
+    eraserEnabled = false
     pen.classList.add("active")
     eraser.classList.remove("active")
     color.className = "active"
