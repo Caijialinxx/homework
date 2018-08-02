@@ -39,37 +39,15 @@ function painting(canvas) {
   ctx.lineWidth = 2
   ctx.radius = 1
   let isUsing = false;        //是否正在使用
-  let previousPoint = { x: undefined, y: undefined };      //定义一个变量存储上一个点的坐标
+  let previousPoint = {}
   //特性检测
   if (document.body.ontouchstart !== undefined) {
     //触屏设备
-    canvas.ontouchstart = (e) => {
-      let x = e.touches["0"].clientX
-      let y = e.touches["0"].clientY
-      if (!eraserEnabled) {
-        previousPoint = { x: x, y: y }
-        drawPoint(x, y, ctx.radius)
+    canvas.addEventListener('touchstart', touchStart.bind(null, previousPoint))
+    canvas.addEventListener('touchmove', touchMove.bind(null, previousPoint))
+    canvas.addEventListener('touchcancel', touchCancel.bind(null, previousPoint))
       }
       else {
-        ctx.clearRect(x - 5, y - 5, 10, 10)
-      }
-    }
-    canvas.ontouchmove = (e) => {
-      e.preventDefault()
-      let x = e.touches["0"].clientX
-      let y = e.touches["0"].clientY
-      if (!eraserEnabled) {
-        let newPoint = { x: x, y: y }
-        drawPoint(x, y, ctx.radius)           //需要添加此函数才不会使得画出来的线在lineWidth变大时不完整
-        drawLine(previousPoint.x, previousPoint.y, newPoint.x, newPoint.y)
-        previousPoint = newPoint
-      }
-      else {
-        ctx.clearRect(x - 8, y - 8, 16, 16)
-      }
-    }
-  }
-  else {
     //PC设备
     canvas.onmousedown = (e) => {
       isUsing = true
@@ -102,6 +80,40 @@ function painting(canvas) {
       isUsing = false
     }
   }
+}
+function touchStart(point, e) {
+  e.preventDefault()
+  let x, y
+  for (let touch of e.changedTouches) {
+    x = touch.clientX
+    y = touch.clientY
+    if (!eraserEnabled) {
+      point[touch.identifier] = { x: x, y: y }
+      drawPoint(x, y, ctx.radius)
+    } else {
+      ctx.clearRect(x - 5, y - 5, 10, 10)
+    }
+  }
+}
+function touchMove(originalPoint, e) {
+  e.preventDefault()
+  let x, y, newPoint = {}
+  for (let touch of e.changedTouches) {
+    x = touch.clientX
+    y = touch.clientY
+    if (!eraserEnabled) {
+      newPoint[touch.identifier] = { x: x, y: y }
+      drawPoint(x, y, ctx.radius)           //需要添加此函数才不会使得画出来的线在lineWidth变大时不完整
+      drawLine(originalPoint[touch.identifier].x, originalPoint[touch.identifier].y, newPoint[touch.identifier].x, newPoint[touch.identifier].y)
+      originalPoint[touch.identifier] = newPoint[touch.identifier]
+    }
+    else {
+      ctx.clearRect(x - 8, y - 8, 16, 16)
+    }
+  }
+}
+function touchCancel() {
+  alert("Oops! 是不是你的第六个小指头打断了画画~ !!(•'╻'•)꒳ᵒ꒳ᵎᵎᵎ \n\n乖，听话，最多只能用五个指头哦！")
 }
 
 /* 选笔触颜色 */
