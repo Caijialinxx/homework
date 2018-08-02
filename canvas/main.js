@@ -30,34 +30,6 @@ actions.addEventListener('click', (e) => {
   }
 })
 
-function takeAction(element) {
-  if (element === 'pen') {
-    eraserEnabled = false
-    pen.classList.add("active")
-    eraser.classList.remove("active")
-    color.className = "active"
-    thickness.className = "active"
-  } else if (element === 'eraser') {
-    eraserEnabled = true
-    pen.classList.remove("active")
-    eraser.classList.add("active")
-    color.className = "remove"
-    thickness.className = "remove"
-  } else if (element === 'clearall') {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)    //清屏
-    pen.classList.add("active")
-    eraser.classList.remove("active")
-    color.className = "active"
-    thickness.className = "active"
-  } else if (element === 'save') {
-    let a = document.createElement("a")
-    a.href = canvas.toDataURL()           //获得图片地址
-    a.target = "_blank"
-    a.download = "image.png"
-    a.click()
-  }
-}
-
 /****************************/
 
 /* 绘制操作 */
@@ -153,12 +125,16 @@ function changeThickness(thickness) {
   whichActived(thickness, 'thickness')
 }
 function whichActived(target, parentID) {
-  let parentNode = document.getElementById(parentID)
+  let parentNode
+  if (parentID === 'color') {
+    parentNode = color
+  } else if (parentID === 'thickness') {
+    parentNode = thickness
+  }
   for (let i = 0; i < parentNode.children.length; i++) {
     if (target === parentNode.children[i].id) {
       parentNode.children[i].className = "active"
-    }
-    else {
+    } else if (target !== parentID) {
       parentNode.children[i].className = ""
     }
   }
@@ -176,6 +152,34 @@ function drawLine(x1, y1, x2, y2) {
   ctx.lineTo(x2, y2)
   ctx.stroke()
   //ctx.closePath()会导致线条粗细不均
+}
+/* 选择哪个动作 */
+function takeAction(element) {
+  if (element === 'pen') {
+    eraserEnabled = false
+    pen.classList.add("active")
+    eraser.classList.remove("active")
+    color.className = "active"
+    thickness.className = "active"
+  } else if (element === 'eraser') {
+    eraserEnabled = true
+    pen.classList.remove("active")
+    eraser.classList.add("active")
+    color.className = "remove"
+    thickness.className = "remove"
+  } else if (element === 'clearall') {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)    //清屏
+    pen.classList.add("active")
+    eraser.classList.remove("active")
+    color.className = "active"
+    thickness.className = "active"
+  } else if (element === 'save') {
+    let a = document.createElement("a")
+    a.href = canvas.toDataURL()           //获得图片地址
+    a.target = "_blank"
+    a.download = "image.png"
+    a.click()
+  }
 }
 
 /* 自动调整画布宽高 */
