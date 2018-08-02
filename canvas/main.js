@@ -14,12 +14,8 @@ autoSetCanvasSize(canvas)
 //3. 执行用户动作
 painting(canvas)
 
-color.addEventListener('click', (e) => {
-  changeColor(e.target.id)
-})
-thickness.addEventListener('click', (e) => {
-  changeThickness(e.target.id)
-})
+color.addEventListener('click', changeColor)
+thickness.addEventListener('click', changeThickness)
 actions.addEventListener('click', (e) => {
   if (e.target.tagName === 'svg') {
     takeAction(e.target.id)
@@ -117,24 +113,26 @@ function touchCancel() {
 }
 
 /* 选笔触颜色 */
-function changeColor(color) {
-  ctx.strokeStyle = color
-  ctx.fillStyle = color
-  whichActived(color, 'color')
+function changeColor(e) {
+  let selectedColor = e.target.id
+  ctx.strokeStyle = selectedColor
+  ctx.fillStyle = selectedColor
+  whichActived(selectedColor, 'color')
 }
 /* 选笔触粗细 */
-function changeThickness(thickness) {
-  if (thickness === 'thin') {
+function changeThickness(e) {
+  let selectedThickness = e.target.id
+  if (selectedThickness === 'thin') {
     ctx.lineWidth = 2
     ctx.radius = 1
-  } else if (thickness === 'middle') {
+  } else if (selectedThickness === 'middle') {
     ctx.lineWidth = 6
     ctx.radius = 3
-  } else if (thickness === 'thick') {
+  } else if (selectedThickness === 'thick') {
     ctx.lineWidth = 10
     ctx.radius = 5
   }
-  whichActived(thickness, 'thickness')
+  whichActived(selectedThickness, 'thickness')
 }
 function whichActived(target, parentID) {
   let parentNode
