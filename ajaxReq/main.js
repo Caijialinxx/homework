@@ -12,7 +12,7 @@ $.ajax = function ({ url, method, body, headers }) {
     request.onreadystatechange = () => {
       if (request.readyState === 4) {
         if (request.status >= 200 && request.status < 300) {
-          resolve.call(undefined, request.responseText)
+          resolve.call(undefined, request)
         } else if (request.status >= 400) {
           reject.call(undefined, request)
         }
@@ -22,17 +22,48 @@ $.ajax = function ({ url, method, body, headers }) {
   })
 }
 
-myButton.addEventListener('click', (e) => {
+sendPOST.addEventListener('click', (e) => {
+  e.preventDefault()
+  let user = post_user.value,
+    path = post_path.value,
+    content = post_content.value
   window.jQuery.ajax({
-    url: '/xxx',
+    url: './' + path,
     method: 'post',
-    body: 'xixixixixixi',
+    body: content,
     headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-      'frank': '18'
+      'content-type': 'text/plain;charset=UTF-8',
+      'author': user
     }
   }).then(
-    (text) => { console.log(text) },
-    (request) => { console.log(request) }
+    (request) => {
+      showResult(request)
+    },
+    (request) => {
+      showResult(request)
+    }
   )
 })
+sendGET.addEventListener('click', (e) => {
+  e.preventDefault()
+  let path = get_path.value
+  window.jQuery.ajax({
+    url: path,
+    method: 'get'
+  }).then(
+    (request) => {
+      showResult(request)
+    },
+    (request) => {
+      showResult(request)
+    }
+  )
+})
+
+function showResult(request){
+  result.style.display = 'flex';
+  rep_url.innerText = request.responseURL
+  rep_content.innerText = request.responseText
+  rep_status.innerText = request.status
+  rep_statusText.innerText = request.statusText
+}

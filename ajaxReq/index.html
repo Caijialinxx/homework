@@ -2,14 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    *{margin:0;padding:0}
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    .wrapper h1 {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    .wrapper section {
+      margin: 10px 0;
+    }
+    .wrapper section h2 {
+      font-size: 18px;
+      font-weight: normal;
+      margin-bottom: 6px;
+    }
+    .wrapper section form {
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
+    }
+    .wrapper section form input {
+      margin: 6px 0;
+      padding: 0 6px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .wrapper section#result {
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      line-height: 1.7;
+    }
+  </style>
+  <title>原生 JS 模拟 $.ajax()</title>
 </head>
 <body>
-  <button id="myButton">点我</button>
-  <form action="https://www.baidu.com" method="GET">
-    <input type="password" name="password">
-    <input type="submit">
-  </form>
+  <div class="wrapper">
+    <h1>原生 JavaScript 模拟 jQuery.ajax() 的实现</h1>
+    <section>
+      <h2>示例一</h2>
+      <form method="POST">
+        <input id="post_user" type="text" placeholder="your name">
+        <input id="post_path" type="text" placeholder="path you send post request">
+        <input id="post_content" type="text" placeholder="content sent in request">
+        <input id="sendPOST" type="submit" value="发送 POST 请求">
+      </form>
+    </section>
+
+    <section>
+      <h2>示例二</h2>
+      <form method="GET">
+        <input id="get_path" type="text" placeholder="input 'xxx' or path you want to get">
+        <input id="sendGET" type="submit" value="发送 GET 请求">
+      </form>
+    </section>
+
+    <section id="result">
+      <h2>结果</h2>
+      响应地址：<span id=rep_url></span>
+      响应内容：<span id=rep_content></span>
+      状态码：<span id=rep_status></span>
+      状态信息：<span id=rep_statusText></span>
+    </section>
+  </div>
   <script src="./main.js"></script>
 </body>
 </html>
