@@ -1,5 +1,5 @@
 # homework
-这里是我的日常小 Demo 发布的地方，如果需要看预览，地址为  GitHub Page + Demo 文件名。例如，我想看此目录下的 cerberus/ 的预览，那么我需要在 https://caijialinxx.github.io/homework/ 后添加 cerberus/ 在撤回即可，即：https://caijialinxx.github.io/homework/cerberus/
+这里是我的日常小 Demo 发布的地方，如果需要看预览，地址为  GitHub Page + Demo 文件名。例如，我想看此目录下的 cerberus/ 的预览，那么我需要在 https://caijialinxx.github.io/homework/ 后添加 cerberus/ 在回车即可，即：https://caijialinxx.github.io/homework/cerberus/
 
 ## 可预览的项目
 - [苹果风格的轮播](https://caijialinxx.github.io/homework/apple-like_Slide)（缩略图轮播）
