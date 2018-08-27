@@ -5,7 +5,7 @@
 - [苹果风格的轮播](https://caijialinxx.github.io/homework/apple-like_Slide)（缩略图轮播）
 - [无缝轮播](https://caijialinxx.github.io/homework/slides/)（Loop模式轮播）
 - [主页书签](https://caijialinxx.github.io/homework/bookmarks/)
-- [我的画板](https://caijialinxx.github.io/homework/canvas/)   优化过的 Canvas 画板项目[源码]()、[预览]()
+- [我的画板](https://caijialinxx.github.io/homework/canvas/)   优化过的 Canvas 画板项目[源码](https://github.com/Caijialinxx/Slides)、[预览](https://caijialinxx.github.io/Canvas/)，支持触摸设备五指以下（含）同时画图
 - [JS动态画小可](https://caijialinxx.github.io/homework/cerberus/)
 - [点击别处关闭浮层](https://caijialinxx.github.io/homework/popover/)
 - [纯CSS绘制阴阳图案](https://caijialinxx.github.io/homework/YinYang.html)
